@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dehradun Hospital – Admin Panel</title>
+  <!-- Global Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- Dashboard Page Styles (reused for hero/stat-card/card layout) -->
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <!-- Admin-only additions (tables, tabs, status pills) -->
+  <link rel="stylesheet" href="css/admin.css" />
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+<body>
+
+  <!-- ==================== FIXED NAVIGATION ==================== -->
+  <nav>
+    <div class="logo">
+      <a href="index.html">
+        <i class="fa-solid fa-hospital fa-2x"></i>
+        <p>Dehradun<br /><span>Hospital</span></p>
+      </a>
+    </div>
+    <div class="login-button">
+      <span class="user-greeting"><i class="fa-solid fa-user-shield"></i> Admin Panel</span>
+      <button class="user logout-btn" onclick="logout()">
+        <i class="fa-solid fa-right-from-bracket"></i> Logout
+      </button>
+    </div>
+  </nav>
+
+  <!-- ==================== ADMIN HERO ==================== -->
+  <section class="dashboard-hero">
+    <div class="dashboard-hero-overlay"></div>
+    <div class="dashboard-hero-content">
+      <h1>Admin Panel</h1>
+      <p>______ manage the hospital</p>
+      <span>Appointments, patient messages, and doctors — all in one place.</span>
+    </div>
+  </section>
+
+  <!-- ==================== ADMIN MAIN ==================== -->
+  <section class="dashboard-main">
+    <div class="container dashboard-container">
+
+      <div class="welcome-section">
+        <div class="welcome-text">
+          <h2><i class="fa-solid fa-hand-wave"></i> Hello, <span id="adminName">Admin</span></h2>
+          <p>Here's what's happening across the hospital today.</p>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon blue"><i class="fa-solid fa-calendar-check"></i></div>
+          <div class="stat-info">
+            <h3 id="statTotal">0</h3>
+            <p>Total Appointments</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon orange"><i class="fa-solid fa-clock"></i></div>
+          <div class="stat-info">
+            <h3 id="statPending">0</h3>
+            <p>Pending</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon green"><i class="fa-solid fa-circle-check"></i></div>
+          <div class="stat-info">
+            <h3 id="statConfirmed">0</h3>
+            <p>Confirmed</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon red"><i class="fa-solid fa-circle-xmark"></i></div>
+          <div class="stat-info">
+            <h3 id="statCancelled">0</h3>
+            <p>Cancelled</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon orange"><i class="fa-solid fa-envelope"></i></div>
+          <div class="stat-info">
+            <h3 id="statUnresolved">0</h3>
+            <p>Unread Messages</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="admin-tabs">
+        <button class="admin-tab active" data-tab="appointmentsPanel">
+          <i class="fa-solid fa-calendar-days"></i> Appointments
+        </button>
+        <button class="admin-tab" data-tab="contactsPanel">
+          <i class="fa-solid fa-envelope-open-text"></i> Contact Messages
+        </button>
+        <button class="admin-tab" data-tab="doctorsPanel">
+          <i class="fa-solid fa-user-doctor"></i> Doctors
+        </button>
+      </div>
+
+      <!-- ===== Appointments Panel ===== -->
+      <div class="dashboard-card admin-panel active" id="appointmentsPanel">
+        <div class="card-header">
+          <h3><i class="fa-solid fa-calendar-days"></i> All Appointments</h3>
+          <span class="badge" id="appointmentsCount">0</span>
+        </div>
+        <div class="card-body">
+          <div class="admin-toolbar">
+            <select id="appointmentStatusFilter">
+              <option value="">All statuses</option>
+              <option value="pending">Pending</option>
+              <option value="confirmed">Confirmed</option>
+              <option value="completed">Completed</option>
+              <option value="cancelled">Cancelled</option>
+            </select>
+            <button class="icon-btn" onclick="loadAppointments()"><i class="fa-solid fa-rotate"></i> Refresh</button>
+          </div>
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Patient</th>
+                  <th>Contact</th>
+                  <th>Department</th>
+                  <th>Doctor</th>
+                  <th>Date &amp; Time</th>
+                  <th>Status</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="appointmentsTableBody">
+                <tr><td colspan="7" class="muted">Loading…</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== Contact Messages Panel ===== -->
+      <div class="dashboard-card admin-panel" id="contactsPanel">
+        <div class="card-header">
+          <h3><i class="fa-solid fa-envelope-open-text"></i> Contact Messages</h3>
+          <span class="badge" id="contactsCount">0</span>
+        </div>
+        <div class="card-body">
+          <div class="admin-toolbar">
+            <button class="icon-btn" onclick="loadContacts()"><i class="fa-solid fa-rotate"></i> Refresh</button>
+          </div>
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>From</th>
+                  <th>Subject</th>
+                  <th>Message</th>
+                  <th>Received</th>
+                  <th>Status</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="contactsTableBody">
+                <tr><td colspan="6" class="muted">Loading…</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== Doctors Panel ===== -->
+      <div class="dashboard-card admin-panel" id="doctorsPanel">
+        <div class="card-header">
+          <h3><i class="fa-solid fa-user-doctor"></i> Doctors</h3>
+          <span class="badge" id="doctorsCount">0</span>
+        </div>
+        <div class="card-body">
+          <div class="admin-toolbar">
+            <select id="doctorDeptFilter">
+              <option value="">All departments</option>
+              <option value="cardiology">Cardiology</option>
+              <option value="neurology">Neurology</option>
+              <option value="orthopedics">Orthopedics</option>
+              <option value="ent">ENT</option>
+              <option value="dental">Dental</option>
+              <option value="general">General</option>
+            </select>
+            <button class="icon-btn" onclick="loadDoctors()"><i class="fa-solid fa-rotate"></i> Refresh</button>
+          </div>
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Department</th>
+                  <th>Specialty</th>
+                  <th>Qualification</th>
+                  <th>Experience</th>
+                </tr>
+              </thead>
+              <tbody id="doctorsTableBody">
+                <tr><td colspan="5" class="muted">Loading…</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="muted" style="margin-top:0.8rem;">
+            Adding/editing doctors from this screen isn't wired up yet — the backend already
+            supports it (<code>POST/PUT/DELETE /api/doctors</code>), this is just a read-only view for now.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== FIXED FOOTER ==================== -->
+  <footer>
+    <a href="index.html" class="fot home">
+      <i class="fa-solid fa-house fa-2xl"></i>
+      <p>HOME</p>
+    </a>
+    <a href="departments.html" class="fot department">
+      <i class="fa-solid fa-building-user fa-2xl"></i>
+      <p>DEPARTMENTS</p>
+    </a>
+    <a href="about.html" class="fot about">
+      <i class="fa-solid fa-circle-info fa-2xl"></i>
+      <p>ABOUT</p>
+    </a>
+    <a href="doctor.html" class="fot doctors">
+      <i class="fa-solid fa-user-doctor fa-2xl"></i>
+      <p>DOCTORS</p>
+    </a>
+    <a href="contact.html" class="fot contact">
+      <i class="fa-solid fa-phone fa-2xl"></i>
+      <p>CONTACT</p>
+    </a>
+  </footer>
+
+  <!-- ==================== BLACK COPYRIGHT BAR ==================== -->
+  <div class="copyright-bar">
+    <div class="copyright-content">
+      <div class="copyright-text">
+        <p>&copy; 2026 Dehradun Hospital. All rights reserved.</p>
+        <p class="copyright-phone"><i class="fa-solid fa-phone"></i> +91 98765 43210</p>
+        <p class="copyright-email"><i class="fa-solid fa-envelope"></i> info@dehradunhospital.in</p>
+      </div>
+      <div class="copyright-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+      <div class="copyright-social">
+        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== JAVASCRIPT ==================== -->
+  <script>
+    let allAppointments = [];
+    let allContacts = [];
+
+    // ---------- Tabs ----------
+    document.querySelectorAll('.admin-tab').forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.admin-panel').forEach(p => p.classList.remove('active'));
+        this.classList.add('active');
+        document.getElementById(this.dataset.tab).classList.add('active');
+      });
+    });
+
+    function formatDateTime(isoDate, time) {
+      const d = new Date(isoDate + 'T00:00:00');
+      const dateLabel = isNaN(d) ? isoDate : d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+      return dateLabel + (time ? ' at ' + time : '');
+    }
+
+    function departmentLabel(dept) {
+      const labels = {
+        cardiology: 'Cardiology', neurology: 'Neurology', orthopedics: 'Orthopedics',
+        ent: 'ENT', dental: 'Dental', general: 'General Medicine',
+      };
+      return labels[dept] || dept;
+    }
+
+    // ---------- Appointments ----------
+    async function loadAppointments() {
+      const tbody = document.getElementById('appointmentsTableBody');
+      tbody.innerHTML = '<tr><td colspan="7" class="muted">Loading…</td></tr>';
+      try {
+        const { appointments } = await window.HospitalAPI.apiFetch('/appointments');
+        allAppointments = appointments;
+        renderAppointments();
+        updateStats();
+      } catch (err) {
+        tbody.innerHTML = `<tr><td colspan="7" class="muted">⚠️ ${err.message}</td></tr>`;
+      }
+    }
+
+    function renderAppointments() {
+      const filter = document.getElementById('appointmentStatusFilter').value;
+      const rows = filter ? allAppointments.filter(a => a.status === filter) : allAppointments;
+
+      document.getElementById('appointmentsCount').textContent = rows.length;
+
+      const tbody = document.getElementById('appointmentsTableBody');
+      if (rows.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="7" class="muted">No appointments found.</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = rows.map(app => `
+        <tr>
+          <td><strong>${app.name}</strong></td>
+          <td>${app.email}<br /><span class="muted">${app.phone}</span></td>
+          <td>${departmentLabel(app.department)}</td>
+          <td>${app.doctor || 'Any Available'}</td>
+          <td>${formatDateTime(app.date, app.time)}</td>
+          <td>
+            <select class="status-select ${app.status}" onchange="updateAppointmentStatus('${app.id}', this.value)">
+              <option value="pending" ${app.status === 'pending' ? 'selected' : ''}>Pending</option>
+              <option value="confirmed" ${app.status === 'confirmed' ? 'selected' : ''}>Confirmed</option>
+              <option value="completed" ${app.status === 'completed' ? 'selected' : ''}>Completed</option>
+              <option value="cancelled" ${app.status === 'cancelled' ? 'selected' : ''}>Cancelled</option>
+            </select>
+          </td>
+          <td><button class="icon-btn danger" onclick="deleteAppointment('${app.id}')">Delete</button></td>
+        </tr>
+      `).join('');
+    }
+
+    async function updateAppointmentStatus(id, status) {
+      try {
+        await window.HospitalAPI.apiFetch(`/appointments/${id}/status`, {
+          method: 'PATCH',
+          body: JSON.stringify({ status }),
+        });
+        const appt = allAppointments.find(a => a.id === id);
+        if (appt) appt.status = status;
+        renderAppointments();
+        updateStats();
+      } catch (err) {
+        alert('⚠️ ' + err.message);
+        loadAppointments();
+      }
+    }
+
+    async function deleteAppointment(id) {
+      if (!confirm('Permanently delete this appointment?')) return;
+      try {
+        await window.HospitalAPI.apiFetch(`/appointments/${id}`, { method: 'DELETE' });
+        allAppointments = allAppointments.filter(a => a.id !== id);
+        renderAppointments();
+        updateStats();
+      } catch (err) {
+        alert('⚠️ ' + err.message);
+      }
+    }
+
+    document.getElementById('appointmentStatusFilter').addEventListener('change', renderAppointments);
+
+    // ---------- Contact messages ----------
+    async function loadContacts() {
+      const tbody = document.getElementById('contactsTableBody');
+      tbody.innerHTML = '<tr><td colspan="6" class="muted">Loading…</td></tr>';
+      try {
+        const { contacts } = await window.HospitalAPI.apiFetch('/contact');
+        allContacts = contacts;
+        renderContacts();
+        updateStats();
+      } catch (err) {
+        tbody.innerHTML = `<tr><td colspan="6" class="muted">⚠️ ${err.message}</td></tr>`;
+      }
+    }
+
+    function renderContacts() {
+      document.getElementById('contactsCount').textContent = allContacts.length;
+
+      const tbody = document.getElementById('contactsTableBody');
+      if (allContacts.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="6" class="muted">No messages yet.</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = allContacts.map(c => `
+        <tr>
+          <td><strong>${c.name}</strong><br /><span class="muted">${c.email}</span></td>
+          <td>${c.subject}</td>
+          <td class="contact-message-cell">${c.message}</td>
+          <td class="muted">${new Date(c.createdAt).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })}</td>
+          <td>${c.resolved
+            ? '<span class="status-select completed">Resolved</span>'
+            : '<span class="status-select pending">Open</span>'}</td>
+          <td>${c.resolved ? '' : `<button class="icon-btn done" onclick="resolveContact('${c.id}')">Mark Resolved</button>`}</td>
+        </tr>
+      `).join('');
+    }
+
+    async function resolveContact(id) {
+      try {
+        await window.HospitalAPI.apiFetch(`/contact/${id}/resolve`, { method: 'PATCH' });
+        const c = allContacts.find(x => x.id === id);
+        if (c) c.resolved = true;
+        renderContacts();
+        updateStats();
+      } catch (err) {
+        alert('⚠️ ' + err.message);
+      }
+    }
+
+    // ---------- Doctors (read-only) ----------
+    async function loadDoctors() {
+      const tbody = document.getElementById('doctorsTableBody');
+      tbody.innerHTML = '<tr><td colspan="5" class="muted">Loading…</td></tr>';
+      const dept = document.getElementById('doctorDeptFilter').value;
+      try {
+        const { doctors } = await window.HospitalAPI.apiFetch('/doctors' + (dept ? `?department=${dept}` : ''));
+        document.getElementById('doctorsCount').textContent = doctors.length;
+        tbody.innerHTML = doctors.length === 0
+          ? '<tr><td colspan="5" class="muted">No doctors found.</td></tr>'
+          : doctors.map(d => `
+              <tr>
+                <td><strong>${d.name}</strong></td>
+                <td>${departmentLabel(d.department)}</td>
+                <td>${d.specialty}</td>
+                <td>${d.qualification}</td>
+                <td>${d.experienceYears} yrs</td>
+              </tr>
+            `).join('');
+      } catch (err) {
+        tbody.innerHTML = `<tr><td colspan="5" class="muted">⚠️ ${err.message}</td></tr>`;
+      }
+    }
+
+    document.getElementById('doctorDeptFilter').addEventListener('change', loadDoctors);
+
+    // ---------- Stats ----------
+    function updateStats() {
+      document.getElementById('statTotal').textContent = allAppointments.length;
+      document.getElementById('statPending').textContent = allAppointments.filter(a => a.status === 'pending').length;
+      document.getElementById('statConfirmed').textContent = allAppointments.filter(a => a.status === 'confirmed').length;
+      document.getElementById('statCancelled').textContent = allAppointments.filter(a => a.status === 'cancelled').length;
+      document.getElementById('statUnresolved').textContent = allContacts.filter(c => !c.resolved).length;
+    }
+
+    // ---------- Page init ----------
+    async function initAdmin() {
+      if (!window.HospitalAPI.requireAuthOrRedirect()) return;
+
+      const user = window.HospitalAPI.getUser();
+      if (!user || user.role !== 'admin') {
+        alert('⚠️ This page is for admins only.');
+        window.location.href = 'dashboard.html';
+        return;
+      }
+
+      document.getElementById('adminName').textContent = user.name.split(' ')[0];
+      document.querySelector('.user-greeting').innerHTML =
+        `<i class="fa-solid fa-user-shield"></i> Admin: ${user.name.split(' ')[0]}`;
+
+      await Promise.all([loadAppointments(), loadContacts(), loadDoctors()]);
+    }
+
+    document.addEventListener('DOMContentLoaded', initAdmin);
+  </script>
+  <script src="JS/api.js"></script>
+  <script src="JS/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,228 @@
+/* ==========================================
+   DEPARTMENTS PAGE – SPECIFIC STYLES
+   ========================================== */
+
+/* ----- DEPARTMENTS HERO ----- */
+.dept-hero {
+  position: relative;
+  height: 50vh;
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1920&q=80') center/cover no-repeat;
+  border-bottom: 5px solid #0069bcff;
+}
+
+.dept-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0, 50, 90, 0.8), rgba(0, 105, 188, 0.65));
+  z-index: 1;
+}
+
+.dept-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 0 2rem;
+}
+
+.dept-hero-content h1 {
+  font-size: 3.8rem;
+  color: #ffffff;
+  font-weight: 900;
+  margin-bottom: 0.3rem;
+}
+
+.dept-hero-content p {
+  color: #ffe484;
+  font-weight: 400;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  margin-bottom: 0.8rem;
+}
+
+.dept-hero-content span {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.9);
+  display: inline-block;
+  max-width: 600px;
+  line-height: 1.5;
+}
+
+/* ----- DEPARTMENT GRID SECTION ----- */
+.dept-grid-section {
+  padding: 4rem 0;
+  background: #e1f2ff;
+}
+
+.dept-grid-section .container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ----- DEPARTMENT CARD ----- */
+.dept-card {
+  background: #ffffff;
+  padding: 2rem 1.8rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 105, 188, 0.06);
+  transition: 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.dept-card:hover {
+  transform: translateY(-6px);
+  border-color: #0069bcff;
+  box-shadow: 0 12px 32px rgba(0, 105, 188, 0.1);
+}
+
+.dept-card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.dept-icon {
+  width: 56px;
+  height: 56px;
+  background: #d4eaff;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 2px solid #0069bcff;
+  transition: 0.3s ease;
+}
+
+.dept-card:hover .dept-icon {
+  background: #0069bcff;
+}
+
+.dept-icon i {
+  font-size: 1.8rem;
+  color: #0069bcff;
+  transition: 0.3s ease;
+}
+
+.dept-card:hover .dept-icon i {
+  color: #ffffff;
+}
+
+.dept-card-header h3 {
+  font-size: 1.4rem;
+  color: #1a2a3a;
+  font-weight: 700;
+}
+
+.dept-desc {
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
+  flex-grow: 0;
+}
+
+.dept-services {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+  flex-grow: 1;
+}
+
+.dept-services li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: #1a2a3a;
+  font-size: 0.9rem;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid #f0f5fa;
+}
+
+.dept-services li:last-child {
+  border-bottom: none;
+}
+
+.dept-services li i {
+  color: #0069bcff;
+  font-size: 0.9rem;
+  width: 20px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* ----- LEARN MORE BUTTON ----- */
+.dept-learn-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: #0069bcff;
+  border: 2px solid #0069bcff;
+  padding: 0.6rem 1.8rem;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: 0.25s ease;
+  text-decoration: none;
+  align-self: flex-start;
+  margin-top: 0.3rem;
+}
+
+.dept-learn-btn:hover {
+  background: #0069bcff;
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(0, 105, 188, 0.3);
+  transform: translateX(4px);
+}
+
+.dept-learn-btn i {
+  transition: 0.25s ease;
+}
+
+.dept-learn-btn:hover i {
+  transform: translateX(4px);
+}
+
+/* ==========================================
+   LAPTOP RESPONSIVE FINE-TUNING
+   ========================================== */
+
+@media screen and (max-width: 1366px) {
+  .dept-hero-content h1 { font-size: 3.2rem; }
+  .dept-grid-section .container { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+}
+
+@media screen and (max-width: 1200px) {
+  .dept-grid-section .container { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+}
+
+@media screen and (max-width: 1024px) {
+  .dept-hero { height: 40vh; min-height: 280px; }
+  .dept-hero-content h1 { font-size: 2.6rem; }
+  .dept-hero-content span { font-size: 1rem; }
+  .dept-grid-section .container { grid-template-columns: 1fr 1fr; gap: 1.2rem; padding: 0 1.5rem; }
+  .dept-card { padding: 1.5rem 1.2rem; }
+  .dept-card-header h3 { font-size: 1.2rem; }
+  .dept-icon { width: 48px; height: 48px; }
+  .dept-icon i { font-size: 1.5rem; }
+  .dept-services li { font-size: 0.85rem; }
+}
+
+@media screen and (max-width: 768px) {
+  .dept-grid-section .container { grid-template-columns: 1fr; max-width: 450px; margin: 0 auto; }
+  .dept-hero { height: 35vh; min-height: 240px; }
+  .dept-hero-content h1 { font-size: 2.2rem; }
+  .dept-card { padding: 1.5rem 1.2rem; }
+}

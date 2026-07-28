@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dehradun Hospital – Our Doctors</title>
+  <!-- Global Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- Doctor Page Styles -->
+  <link rel="stylesheet" href="css/doctor.css" />
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+<body>
+
+  <!--NAVIGATION-->
+  <nav>
+    <div class="logo">
+      <a href="index.html">
+        <i class="fa-solid fa-hospital fa-2x"></i>
+        <p>Dehradun<br /><span>Hospital</span></p>
+      </a>
+    </div>
+    <div class="login-button">
+      <a href="login.html"><button class="user login">Login</button></a>
+      <a href="register.html"><button class="user">Register</button></a>
+    </div>
+  </nav>
+
+  <!-- DOCTOR HERO  -->
+  <section class="doctor-hero">
+    <div class="doctor-hero-overlay"></div>
+    <div class="doctor-hero-content">
+      <h1>Our Expert Doctors</h1>
+      <p>______ dedicated to your well-being</p>
+      <span>Meet the specialists who make Dehradun Hospital a centre of medical excellence.</span>
+    </div>
+  </section>
+
+  <!-- ==================== FILTER TABS ==================== -->
+  <div class="filter-tabs">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="cardiology">Cardiology</button>
+    <button class="filter-btn" data-filter="neurology">Neurology</button>
+    <button class="filter-btn" data-filter="orthopedics">Orthopedics</button>
+    <button class="filter-btn" data-filter="ent">ENT</button>
+    <button class="filter-btn" data-filter="dental">Dental</button>
+    <button class="filter-btn" data-filter="general">General Medicine</button>
+  </div>
+
+  <!-- ==================== DOCTOR GRID ==================== -->
+  <section class="doctor-grid-section">
+    <div class="container doctor-grid">
+
+      <!-- Doctor 1 - Cardiology -->
+      <div class="doctor-card" data-category="cardiology">
+        <div class="doctor-avatar">
+          <img src="accets/doctor1.png" alt="Dr. Ananya Sharma" />
+        </div>
+        <h3>Dr. Ananya Sharma</h3>
+        <p class="specialty">Cardiologist</p>
+        <p class="qualification">MBBS, MD (Cardiology), DM</p>
+        <p class="experience"><i class="fa-solid fa-clock"></i> 15+ years experience</p>
+        <span class="dept-tag">Cardiology</span>
+        <a href="appointment.html" class="book-btn" data-doctor-name="Dr. Ananya Sharma">Book Appointment</a>
+      </div>
+
+      <!-- Doctor 2 - Neurology -->
+      <div class="doctor-card" data-category="neurology">
+        <div class="doctor-avatar">
+          <img src="accets/doctor2.png" alt="Dr. Rajeev Verma" />
+        </div>
+        <h3>Dr. Rajeev Verma</h3>
+        <p class="specialty">Neurologist</p>
+        <p class="qualification">MBBS, MD (Neurology)</p>
+        <p class="experience"><i class="fa-solid fa-clock"></i> 12+ years experience</p>
+        <span class="dept-tag">Neurology</span>
+        <a href="appointment.html" class="book-btn" data-doctor-name="Dr. Rajeev Verma">Book Appointment</a>
+      </div>
+
+      <!-- Doctor 3 - Orthopedics -->
+      <div class="doctor-card" data-category="orthopedics">
+        <div class="doctor-avatar">
+          <img src="accets/doctor3.png" alt="Dr. Meera Iyer" />
+        </div>
+        <h3>Dr. Rohit Singh</h3>
+        <p class="specialty">Orthopedic Surgeon</p>
+        <p class="qualification">MBBS, MS (Ortho)</p>
+        <p class="experience"><i class="fa-solid fa-clock"></i> 10+ years experience</p>
+        <span class="dept-tag">Orthopedics</span>
+        <a href="appointment.html" class="book-btn" data-doctor-name="Dr. Rohit Singh">Book Appointment</a>
+      </div>
+
+      <!-- Doctor 4 - ENT -->
+      <div class="doctor-card" data-category="ent">
+        <div class="doctor-avatar">
+          <img src="accets/doctor4.png" alt="Dr. Sunil Kumar" />
+        </div>
+        <h3>Dr. Sunil Kumar</h3>
+        <p class="specialty">ENT Specialist</p>
+        <p class="qualification">MBBS, MS (ENT)</p>
+        <p class="experience"><i class="fa-solid fa-clock"></i> 8+ years experience</p>
+        <span class="dept-tag">ENT</span>
+        <a href="appointment.html" class="book-btn" data-doctor-name="Dr. Sunil Kumar">Book Appointment</a>
+      </div>
+
+      <!-- Doctor 5 - Dental -->
+      <div class="doctor-card" data-category="dental">
+        <div class="doctor-avatar">
+          <img src="https://images.unsplash.com/photo-1659353888906-adb3e0041693?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8d29tYW4lMjBkb2N0b3J8ZW58MHx8MHx8fDA%3D" alt="PM" />
+        </div>
+        <h3>Dr. Priya Malhotra</h3>
+        <p class="specialty">Dentist</p>
+        <p class="qualification">BDS, MDS (Oral Surgery)</p>
+        <p class="experience"><i class="fa-solid fa-clock"></i> 7+ years experience</p>
+        <span class="dept-tag">Dental</span>
+        <a href="appointment.html" class="book-btn" data-doctor-name="Dr. Priya Malhotra">Book Appointment</a>
+      </div>
+
+      <!-- Doctor 6 - General Medicine -->
+      <div class="doctor-card" data-category="general">
+        <div class="doctor-avatar">
+          <img src="https://static.vecteezy.com/system/resources/thumbnails/026/375/249/small/ai-generative-portrait-of-confident-male-doctor-in-white-coat-and-stethoscope-standing-with-arms-crossed-and-looking-at-camera-photo.jpg" alt="Dr. Sanjay Gupta" />
+        </div>
+        <h3>Dr. Sanjay Gupta</h3>
+        <p class="specialty">General Physician</p>
+        <p class="qualification">MBBS, MD (Internal Medicine)</p>
+        <p class="experience"><i class="fa-solid fa-clock"></i> 14+ years experience</p>
+        <span class="dept-tag">General Medicine</span>
+        <a href="appointment.html" class="book-btn" data-doctor-name="Dr. Sanjay Gupta">Book Appointment</a>
+      </div>
+
+      <!-- Doctor 7 - Cardiology -->
+      <div class="doctor-card" data-category="cardiology">
+        <div class="doctor-avatar">
+          <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZG9jdG9yfGVufDB8fDB8fHww" alt="Dr. Ravi Desai" />
+        </div>
+        <h3>Dr. Ravi Desai</h3>
+        <p class="specialty">Interventional Cardiologist</p>
+        <p class="qualification">MBBS, MD, DM (Cardiology)</p>
+        <p class="experience"><i class="fa-solid fa-clock"></i> 18+ years experience</p>
+        <span class="dept-tag">Cardiology</span>
+        <a href="appointment.html" class="book-btn" data-doctor-name="Dr. Ravi Desai">Book Appointment</a>
+      </div>
+
+      <!-- Doctor 8 - Neurology -->
+      <div class="doctor-card" data-category="neurology">
+        <div class="doctor-avatar">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOxrDtvIgI6JARUp-gLkbW5xYZmQRMTZqOpXFNjCR4ePTKiJeZje4c-zIn&s=10" alt="VS" />
+        </div>
+        <h3>Dr. Vivek Singh</h3>
+        <p class="specialty">Pediatric Neurologist</p>
+        <p class="qualification">MBBS, MD (Pediatrics), DM (Neuro)</p>
+        <p class="experience"><i class="fa-solid fa-clock"></i> 9+ years experience</p>
+        <span class="dept-tag">Neurology</span>
+        <a href="appointment.html" class="book-btn" data-doctor-name="Dr. Vivek Singh">Book Appointment</a>
+      </div>
+
+      <!-- Doctor 9 - Orthopedics -->
+      <div class="doctor-card" data-category="orthopedics">
+        <div class="doctor-avatar">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTw_1LVTJ3jfYmfVt47dIKyQFTIYDPEoQsxg3XPjnVT4g&s=10" alt="Dr. Arjun Singh" />
+        </div>
+        <h3>Dr. Arjun Singh</h3>
+        <p class="specialty">Joint Replacement Surgeon</p>
+        <p class="qualification">MBBS, MS (Ortho), MCh</p>
+        <p class="experience"><i class="fa-solid fa-clock"></i> 11+ years experience</p>
+        <span class="dept-tag">Orthopedics</span>
+        <a href="appointment.html" class="book-btn" data-doctor-name="Dr. Arjun Singh">Book Appointment</a>
+      </div>
+
+      <!-- Doctor 10 - ENT -->
+      <div class="doctor-card" data-category="ent">
+        <div class="doctor-avatar">
+          <img src="https://static.vecteezy.com/system/resources/thumbnails/047/883/550/small/young-indian-female-doctor-isolated-photo.jpg" alt="Dr. Kavita Nair" />
+        </div>
+        <h3>Dr. Kavita Nair</h3>
+        <p class="specialty">Otolaryngologist</p>
+        <p class="qualification">MBBS, MS (ENT)</p>
+        <p class="experience"><i class="fa-solid fa-clock"></i> 6+ years experience</p>
+        <span class="dept-tag">ENT</span>
+        <a href="appointment.html" class="book-btn" data-doctor-name="Dr. Kavita Nair">Book Appointment</a>
+      </div>
+
+      <!-- Doctor 11 - General Medicine -->
+      <div class="doctor-card" data-category="general">
+        <div class="doctor-avatar">
+          <img src="https://t3.ftcdn.net/jpg/15/75/74/62/360_F_1575746216_ZS5ovZG1rHulQUatTq0WVno9BGInMCwW.jpg" alt="Dr. Pooja Mehta" />
+        </div>
+        <h3>Dr. Pooja Mehta</h3>
+        <p class="specialty">Endocrinologist</p>
+        <p class="qualification">MBBS, MD (Endocrinology)</p>
+        <p class="experience"><i class="fa-solid fa-clock"></i> 10+ years experience</p>
+        <span class="dept-tag">General Medicine</span>
+        <a href="appointment.html" class="book-btn" data-doctor-name="Dr. Pooja Mehta">Book Appointment</a>
+      </div>
+
+      <!-- Doctor 12 - Cardiology -->
+      <div class="doctor-card" data-category="cardiology">
+        <div class="doctor-avatar">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWFKEQlo4E8l0u0LLzcvXsHqc2TMIMlzLGr66CyI9CHA&s=10" alt="Dr. Vikram Patel" />
+        </div>
+        <h3>Dr. Vikram Patel</h3>
+        <p class="specialty">Cardiac Surgeon</p>
+        <p class="qualification">MBBS, MS, MCh (Cardiothoracic)</p>
+        <p class="experience"><i class="fa-solid fa-clock"></i> 20+ years experience</p>
+        <span class="dept-tag">Cardiology</span>
+        <a href="appointment.html" class="book-btn" data-doctor-name="Dr. Vikram Patel">Book Appointment</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== CTA ==================== -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Find the Right Specialist for You</h2>
+      <p>Book an appointment with our expert doctors today.</p>
+      <a href="appointment.html" class="btn-primary">
+        <i class="fa-solid fa-calendar-check"></i> Book Appointment
+      </a>
+    </div>
+  </section>
+
+  <!-- ==================== SPACER FOR FIXED FOOTER ==================== -->
+  <div class="space"></div>
+
+  <!-- ==================== FIXED FOOTER ==================== -->
+  <footer>
+    <a href="index.html" class="fot home">
+      <i class="fa-solid fa-house fa-2xl"></i>
+      <p>HOME</p>
+    </a>
+    <a href="departments.html" class="fot department">
+      <i class="fa-solid fa-building-user fa-2xl"></i>
+      <p>DEPARTMENTS</p>
+    </a>
+    <a href="about.html" class="fot about">
+      <i class="fa-solid fa-circle-info fa-2xl"></i>
+      <p>ABOUT</p>
+    </a>
+    <a href="doctor.html" class="fot doctors">
+      <i class="fa-solid fa-user-doctor fa-2xl"></i>
+      <p>DOCTORS</p>
+    </a>
+    <a href="contact.html" class="fot contact">
+      <i class="fa-solid fa-phone fa-2xl"></i>
+      <p>CONTACT</p>
+    </a>
+  </footer>
+
+  <!-- ==================== BLACK COPYRIGHT BAR ==================== -->
+  <div class="copyright-bar">
+    <div class="copyright-content">
+      <div class="copyright-text">
+        <p>&copy; 2026 Dehradun Hospital. All rights reserved.</p>
+        <p class="copyright-phone"><i class="fa-solid fa-phone"></i> +91 98765 43210</p>
+        <p class="copyright-email"><i class="fa-solid fa-envelope"></i> info@dehradunhospital.in</p>
+      </div>
+      <div class="copyright-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+      <div class="copyright-social">
+        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPT -->
+  <script src="JS/api.js"></script>
+<script src="JS/script.js"></script>
+
+</body>
+</html>

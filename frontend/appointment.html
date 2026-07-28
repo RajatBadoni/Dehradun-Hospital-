@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dehradun Hospital – Book Appointment</title>
+  <!-- Global Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- Appointment Page Styles -->
+  <link rel="stylesheet" href="css/appointment.css" />
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+<body>
+
+  <!-- ==================== FIXED NAVIGATION ==================== -->
+  <nav>
+    <div class="logo">
+      <a href="index.html">
+        <i class="fa-solid fa-hospital fa-2x"></i>
+        <p>Dehradun<br /><span>Hospital</span></p>
+      </a>
+    </div>
+    <div class="login-button">
+      <a href="login.html"><button class="user login">Login</button></a>
+      <a href="register.html"><button class="user">Register</button></a>
+    </div>
+  </nav>
+
+  <!-- ==================== APPOINTMENT HERO ==================== -->
+  <section class="appointment-hero">
+    <div class="appointment-hero-overlay"></div>
+    <div class="appointment-hero-content">
+      <h1>Book Your Appointment</h1>
+      <p>______ schedule a visit with our experts</p>
+      <span>Fill in your details and we'll confirm your appointment within 24 hours.</span>
+    </div>
+  </section>
+
+  <!-- ==================== APPOINTMENT FORM SECTION ==================== -->
+  <section class="appointment-form-section">
+    <div class="container appointment-container">
+
+      <!-- Left Column: Form -->
+      <div class="form-column">
+        <h2><i class="fa-solid fa-user-plus"></i> Patient Details</h2>
+        <form class="booking-form" id="appointmentForm">
+
+          <!-- Full Name -->
+          <div class="form-group">
+            <label for="name"><i class="fa-solid fa-user"></i> Full Name *</label>
+            <input type="text" id="name" placeholder="Enter your full name" required />
+          </div>
+
+          <!-- Email & Phone (row) -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email"><i class="fa-solid fa-envelope"></i> Email *</label>
+              <input type="email" id="email" placeholder="your@email.com" required />
+            </div>
+            <div class="form-group">
+              <label for="phone"><i class="fa-solid fa-phone"></i> Phone *</label>
+              <input type="tel" id="phone" placeholder="+91 98765 43210" required />
+            </div>
+          </div>
+
+          <!-- Department & Doctor (row) -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="department"><i class="fa-solid fa-building-user"></i> Department *</label>
+              <select id="department" required>
+                <option value="">Select Department</option>
+                <option value="cardiology">Cardiology</option>
+                <option value="neurology">Neurology</option>
+                <option value="orthopedics">Orthopedics</option>
+                <option value="ent">ENT</option>
+                <option value="dental">Dental</option>
+                <option value="general">General Medicine</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="doctor"><i class="fa-solid fa-user-doctor"></i> Preferred Doctor</label>
+              <select id="doctor">
+                <option value="">Any Available</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Date & Time (row) -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="date"><i class="fa-solid fa-calendar"></i> Preferred Date *</label>
+              <input type="date" id="date" required />
+            </div>
+            <div class="form-group">
+              <label for="time"><i class="fa-solid fa-clock"></i> Preferred Time *</label>
+              <input type="time" id="time" required />
+            </div>
+          </div>
+
+          <!-- Additional Notes -->
+          <div class="form-group">
+            <label for="message"><i class="fa-solid fa-comment"></i> Additional Notes</label>
+            <textarea id="message" rows="4" placeholder="Any special requests or symptoms to mention..."></textarea>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="submit-btn">
+            <i class="fa-solid fa-calendar-check"></i> Book Appointment
+          </button>
+        </form>
+      </div>
+
+      <!-- Right Column: Info Sidebar -->
+      <div class="info-column">
+        <div class="info-card">
+          <h3><i class="fa-solid fa-clock"></i> Working Hours</h3>
+          <ul>
+            <li><span>Mon – Fri</span> <span>8:00 AM – 8:00 PM</span></li>
+            <li><span>Saturday</span> <span>9:00 AM – 5:00 PM</span></li>
+            <li><span>Sunday</span> <span>Emergency Only</span></li>
+          </ul>
+        </div>
+
+        <div class="info-card">
+          <h3><i class="fa-solid fa-phone"></i> Contact</h3>
+          <p><i class="fa-solid fa-phone"></i> +91 98765 43210</p>
+          <p><i class="fa-solid fa-envelope"></i> appointments@dehradunhospital.in</p>
+        </div>
+
+        <div class="info-card">
+          <h3><i class="fa-solid fa-location-dot"></i> Location</h3>
+          <p>123 Health Street,<br />Dehradun – 248001</p>
+          <a href="#" class="map-link"><i class="fa-solid fa-map"></i> View on Map</a>
+        </div>
+
+        <div class="info-card emergency">
+          <h3><i class="fa-solid fa-triangle-exclamation" style="color: #ff4444;"></i> Emergency?</h3>
+          <p>Call our 24/7 emergency helpline:</p>
+          <p class="emergency-number">+91 98765 00000</p>
+          <p class="emergency-note">Immediate care available round the clock</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== CTA ==================== -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Your Health Matters</h2>
+      <p>Book your appointment today and take the first step towards better health.</p>
+      <a href="#appointmentForm" class="btn-primary">
+        <i class="fa-solid fa-arrow-down"></i> Scroll to Form
+      </a>
+    </div>
+  </section>
+
+  <!-- ==================== SPACER FOR FIXED FOOTER ==================== -->
+  <div class="space"></div>
+
+  <!-- ==================== FIXED FOOTER ==================== -->
+  <footer>
+    <a href="index.html" class="fot home">
+      <i class="fa-solid fa-house fa-2xl"></i>
+      <p>HOME</p>
+    </a>
+    <a href="departments.html" class="fot department">
+      <i class="fa-solid fa-building-user fa-2xl"></i>
+      <p>DEPARTMENTS</p>
+    </a>
+    <a href="about.html" class="fot about">
+      <i class="fa-solid fa-circle-info fa-2xl"></i>
+      <p>ABOUT</p>
+    </a>
+    <a href="doctor.html" class="fot doctors">
+      <i class="fa-solid fa-user-doctor fa-2xl"></i>
+      <p>DOCTORS</p>
+    </a>
+    <a href="contact.html" class="fot contact">
+      <i class="fa-solid fa-phone fa-2xl"></i>
+      <p>CONTACT</p>
+    </a>
+  </footer>
+
+  <!-- ==================== BLACK COPYRIGHT BAR ==================== -->
+  <div class="copyright-bar">
+    <div class="copyright-content">
+      <div class="copyright-text">
+        <p>&copy; 2026 Dehradun Hospital. All rights reserved.</p>
+        <p class="copyright-phone"><i class="fa-solid fa-phone"></i> +91 98765 43210</p>
+        <p class="copyright-email"><i class="fa-solid fa-envelope"></i> info@dehradunhospital.in</p>
+      </div>
+      <div class="copyright-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+      <div class="copyright-social">
+        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SCRIPT (Centralized) ==================== -->
+  <script src="JS/api.js"></script>
+<script src="JS/script.js"></script>
+
+</body>
+</html>

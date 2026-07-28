@@ -1,0 +1,148 @@
+/* Admin page — table + filter styling, built to sit alongside dashboard.css */
+
+.admin-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.admin-toolbar select,
+.admin-toolbar input {
+  padding: 0.5rem 0.9rem;
+  border: 1px solid #d4e4f5;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: #1a2a3a;
+  background: #fff;
+}
+
+.admin-table-wrap {
+  overflow-x: auto;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.admin-table th {
+  text-align: left;
+  padding: 0.7rem 0.8rem;
+  background: #f4f9ff;
+  color: #0069bcff;
+  font-weight: 700;
+  white-space: nowrap;
+  border-bottom: 2px solid #e3edf7;
+}
+
+.admin-table td {
+  padding: 0.7rem 0.8rem;
+  border-bottom: 1px solid #f0f5fa;
+  vertical-align: middle;
+}
+
+.admin-table tr:hover td {
+  background: #fafcff;
+}
+
+.admin-table .muted {
+  color: #8a97a6;
+  font-size: 0.8rem;
+}
+
+.status-select {
+  padding: 0.3rem 0.6rem;
+  border-radius: 20px;
+  border: 1px solid #d4e4f5;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+}
+
+.status-select.pending { background: #fff0d4; color: #ff8c00; }
+.status-select.confirmed { background: #d4eaff; color: #0069bcff; }
+.status-select.completed { background: #d4f5e8; color: #00a86b; }
+.status-select.cancelled { background: #ffd4d4; color: #ff4444; }
+
+.icon-btn {
+  background: transparent;
+  border: 2px solid #d4eaff;
+  padding: 0.3rem 1rem;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 0.78rem;
+  color: #0069bcff;
+  cursor: pointer;
+  transition: 0.25s ease;
+  white-space: nowrap;
+}
+
+.icon-btn:hover {
+  background: #0069bcff;
+  color: #fff;
+  border-color: #0069bcff;
+}
+
+.icon-btn.danger {
+  border-color: #ffd4d4;
+  color: #ff4444;
+}
+
+.icon-btn.danger:hover {
+  background: #ff4444;
+  color: #fff;
+  border-color: #ff4444;
+}
+
+.icon-btn.done {
+  border-color: #d4f5e8;
+  color: #00a86b;
+}
+
+.icon-btn.done:hover {
+  background: #00a86b;
+  color: #fff;
+  border-color: #00a86b;
+}
+
+.admin-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.2rem;
+  border-bottom: 2px solid #eef3f9;
+}
+
+.admin-tab {
+  padding: 0.7rem 1.3rem;
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  font-weight: 600;
+  color: #64748b;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.admin-tab.active {
+  color: #0069bcff;
+  border-bottom-color: #0069bcff;
+}
+
+.admin-panel {
+  display: none;
+}
+
+.admin-panel.active {
+  display: block;
+}
+
+.contact-message-cell {
+  max-width: 320px;
+  white-space: normal;
+}

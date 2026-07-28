@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dehradun Hospital – Dashboard</title>
+  <!-- Global Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- Dashboard Page Styles -->
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+<body>
+
+  <!-- ==================== FIXED NAVIGATION ==================== -->
+  <nav>
+    <div class="logo">
+      <a href="index.html">
+        <i class="fa-solid fa-hospital fa-2x"></i>
+        <p>Dehradun<br /><span>Hospital</span></p>
+      </a>
+    </div>
+    <div class="login-button">
+      <span class="user-greeting"><i class="fa-solid fa-user"></i> Welcome, Patient</span>
+      <button class="user logout-btn" onclick="logout()">
+        <i class="fa-solid fa-right-from-bracket"></i> Logout
+      </button>
+    </div>
+  </nav>
+
+  <!-- ==================== DASHBOARD HERO ==================== -->
+  <section class="dashboard-hero">
+    <div class="dashboard-hero-overlay"></div>
+    <div class="dashboard-hero-content">
+      <h1>Patient Dashboard</h1>
+      <p>______ manage your appointments</p>
+      <span>Welcome back! Here's an overview of your healthcare journey with Dehradun Hospital.</span>
+    </div>
+  </section>
+
+  <!-- ==================== DASHBOARD MAIN ==================== -->
+  <section class="dashboard-main">
+    <div class="container dashboard-container">
+
+      <!-- Welcome Section -->
+      <div class="welcome-section">
+        <div class="welcome-text">
+          <h2><i class="fa-solid fa-hand-wave"></i> Hello, <span id="patientName">Patient</span></h2>
+          <p>Here's what's happening with your healthcare.</p>
+        </div>
+        <div class="welcome-actions">
+          <a href="appointment.html" class="btn-primary">
+            <i class="fa-solid fa-plus"></i> New Appointment
+          </a>
+        </div>
+      </div>
+
+      <!-- Stats Grid -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon blue">
+            <i class="fa-solid fa-calendar-check"></i>
+          </div>
+          <div class="stat-info">
+            <h3 id="totalAppointments">0</h3>
+            <p>Total Appointments</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon green">
+            <i class="fa-solid fa-circle-check"></i>
+          </div>
+          <div class="stat-info">
+            <h3 id="upcomingAppointments">0</h3>
+            <p>Upcoming</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon orange">
+            <i class="fa-solid fa-clock"></i>
+          </div>
+          <div class="stat-info">
+            <h3 id="pendingAppointments">0</h3>
+            <p>Pending</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon red">
+            <i class="fa-solid fa-circle-xmark"></i>
+          </div>
+          <div class="stat-info">
+            <h3 id="cancelledAppointments">0</h3>
+            <p>Cancelled</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Two Column Layout -->
+      <div class="dashboard-grid">
+
+        <!-- Left Column: Upcoming Appointments -->
+        <div class="dashboard-column">
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3><i class="fa-solid fa-clock"></i> Upcoming Appointments</h3>
+              <span class="badge" id="upcomingCount">0</span>
+            </div>
+            <div class="card-body" id="upcomingList">
+              <div class="empty-state">
+                <i class="fa-solid fa-calendar-plus"></i>
+                <p>No upcoming appointments</p>
+                <a href="appointment.html" class="btn-secondary-small">Book Now</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3><i class="fa-solid fa-history"></i> Appointment History</h3>
+            </div>
+            <div class="card-body" id="historyList">
+              <div class="empty-state">
+                <i class="fa-solid fa-history"></i>
+                <p>No appointment history</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Profile & Quick Actions -->
+        <div class="dashboard-column">
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3><i class="fa-solid fa-user"></i> My Profile</h3>
+              <button class="edit-btn" onclick="editProfile()">
+                <i class="fa-solid fa-pen"></i> Edit
+              </button>
+            </div>
+            <div class="card-body profile-body">
+              <div class="profile-avatar">
+                <img src="https://ui-avatars.com/api/?name=Patient+User&background=0069bc&color=fff&size=100" alt="Profile" id="profileAvatar" />
+              </div>
+              <div class="profile-details">
+                <p><strong>Full Name:</strong> <span id="profileName">Patient User</span></p>
+                <p><strong>Email:</strong> <span id="profileEmail">patient@email.com</span></p>
+                <p><strong>Phone:</strong> <span id="profilePhone">+91 98765 43210</span></p>
+                <p><strong>Member Since:</strong> <span id="profileSince">January 2026</span></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3><i class="fa-solid fa-bolt"></i> Quick Actions</h3>
+            </div>
+            <div class="card-body quick-actions">
+              <a href="appointment.html" class="quick-action">
+                <i class="fa-solid fa-calendar-plus"></i>
+                <span>Book Appointment</span>
+              </a>
+              <a href="departments.html" class="quick-action">
+                <i class="fa-solid fa-building-user"></i>
+                <span>View Departments</span>
+              </a>
+              <a href="doctor.html" class="quick-action">
+                <i class="fa-solid fa-user-doctor"></i>
+                <span>Find a Doctor</span>
+              </a>
+              <a href="contact.html" class="quick-action">
+                <i class="fa-solid fa-headset"></i>
+                <span>Contact Support</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SPACER FOR FIXED FOOTER ==================== -->
+  <div class="space"></div>
+
+  <!-- ==================== FIXED FOOTER ==================== -->
+  <footer>
+    <a href="index.html" class="fot home">
+      <i class="fa-solid fa-house fa-2xl"></i>
+      <p>HOME</p>
+    </a>
+    <a href="departments.html" class="fot department">
+      <i class="fa-solid fa-building-user fa-2xl"></i>
+      <p>DEPARTMENTS</p>
+    </a>
+    <a href="about.html" class="fot about">
+      <i class="fa-solid fa-circle-info fa-2xl"></i>
+      <p>ABOUT</p>
+    </a>
+    <a href="doctor.html" class="fot doctors">
+      <i class="fa-solid fa-user-doctor fa-2xl"></i>
+      <p>DOCTORS</p>
+    </a>
+    <a href="contact.html" class="fot contact">
+      <i class="fa-solid fa-phone fa-2xl"></i>
+      <p>CONTACT</p>
+    </a>
+  </footer>
+
+  <!-- ==================== BLACK COPYRIGHT BAR ==================== -->
+  <div class="copyright-bar">
+    <div class="copyright-content">
+      <div class="copyright-text">
+        <p>&copy; 2026 Dehradun Hospital. All rights reserved.</p>
+        <p class="copyright-phone"><i class="fa-solid fa-phone"></i> +91 98765 43210</p>
+        <p class="copyright-email"><i class="fa-solid fa-envelope"></i> info@dehradunhospital.in</p>
+      </div>
+      <div class="copyright-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+      <div class="copyright-social">
+        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== JAVASCRIPT ==================== -->
+  <script>
+    // Real data, loaded from the backend (see JS/api.js for HospitalAPI).
+    // `logout()` is already defined globally by JS/api.js, so it isn't redefined here.
+
+    function formatDate(isoDate) {
+      const d = new Date(isoDate + 'T00:00:00');
+      if (isNaN(d)) return isoDate;
+      return d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+    }
+
+    function departmentLabel(dept) {
+      const labels = {
+        cardiology: 'Cardiology',
+        neurology: 'Neurology',
+        orthopedics: 'Orthopedics',
+        ent: 'ENT',
+        dental: 'Dental',
+        general: 'General Medicine',
+      };
+      return labels[dept] || dept;
+    }
+
+    function appointmentItemHTML(app, showCancel) {
+      const isPast = new Date(app.date) < new Date(new Date().toDateString());
+      const badgeClass = app.status === 'cancelled' ? 'cancelled'
+        : app.status === 'completed' ? 'completed'
+        : app.status === 'pending' ? 'pending'
+        : 'upcoming';
+      const badgeLabel = badgeClass.charAt(0).toUpperCase() + badgeClass.slice(1);
+
+      const cancelBtn = (showCancel && app.status !== 'cancelled' && app.status !== 'completed')
+        ? `<button class="edit-btn" onclick="cancelAppointment('${app.id}')">Cancel</button>`
+        : '';
+
+      return `
+        <div class="appointment-item">
+          <div class="appointment-info">
+            <h4>${app.doctor || 'Any Available'}</h4>
+            <p><i class="fa-solid fa-building-user"></i> ${departmentLabel(app.department)}</p>
+            <p><i class="fa-solid fa-calendar"></i> ${formatDate(app.date)} at ${app.time}</p>
+          </div>
+          <div style="display:flex; align-items:center; gap:0.6rem;">
+            <span class="status-badge ${badgeClass}">${badgeLabel}</span>
+            ${cancelBtn}
+          </div>
+        </div>
+      `;
+    }
+
+    async function cancelAppointment(id) {
+      if (!confirm('Cancel this appointment?')) return;
+      try {
+        await window.HospitalAPI.apiFetch('/appointments/' + id, { method: 'DELETE' });
+        loadDashboard();
+      } catch (err) {
+        alert('⚠️ ' + err.message);
+      }
+    }
+
+    // Edit profile (placeholder — no backend endpoint for this yet)
+    function editProfile() {
+      alert('Edit profile functionality coming soon!');
+    }
+
+    async function loadDashboard() {
+      if (!window.HospitalAPI.requireAuthOrRedirect()) return;
+
+      try {
+        const [{ user }, { appointments }] = await Promise.all([
+          window.HospitalAPI.apiFetch('/auth/me'),
+          window.HospitalAPI.apiFetch('/appointments/me'),
+        ]);
+
+        // Profile
+        document.getElementById('patientName').textContent = user.name;
+        document.getElementById('profileName').textContent = user.name;
+        document.getElementById('profileEmail').textContent = user.email;
+        document.getElementById('profilePhone').textContent = user.phone;
+        document.getElementById('profileSince').textContent = new Date(user.createdAt)
+          .toLocaleDateString(undefined, { year: 'numeric', month: 'long' });
+
+        document.getElementById('profileAvatar').src =
+          `https://ui-avatars.com/api/?name=${encodeURIComponent(user.name)}&background=0069bc&color=fff&size=100`;
+
+        document.querySelector('.user-greeting').innerHTML =
+          `<i class="fa-solid fa-user"></i> Welcome, ${user.name.split(' ')[0]}`;
+
+        // Split appointments into buckets
+        const today = new Date(new Date().toDateString());
+        const upcoming = appointments.filter(a =>
+          new Date(a.date) >= today && a.status !== 'cancelled' && a.status !== 'completed'
+        );
+        const history = appointments.filter(a =>
+          a.status === 'completed' || a.status === 'cancelled' || new Date(a.date) < today
+        );
+        const pending = appointments.filter(a => a.status === 'pending');
+        const cancelled = appointments.filter(a => a.status === 'cancelled');
+
+        // Stats
+        document.getElementById('totalAppointments').textContent = appointments.length;
+        document.getElementById('upcomingAppointments').textContent = upcoming.length;
+        document.getElementById('pendingAppointments').textContent = pending.length;
+        document.getElementById('cancelledAppointments').textContent = cancelled.length;
+        document.getElementById('upcomingCount').textContent = upcoming.length;
+
+        // Upcoming list
+        const upcomingList = document.getElementById('upcomingList');
+        upcomingList.innerHTML = upcoming.length === 0
+          ? `<div class="empty-state">
+               <i class="fa-solid fa-calendar-plus"></i>
+               <p>No upcoming appointments</p>
+               <a href="appointment.html" class="btn-secondary-small">Book Now</a>
+             </div>`
+          : upcoming.map(app => appointmentItemHTML(app, true)).join('');
+
+        // History list
+        const historyList = document.getElementById('historyList');
+        historyList.innerHTML = history.length === 0
+          ? `<div class="empty-state">
+               <i class="fa-solid fa-history"></i>
+               <p>No appointment history</p>
+             </div>`
+          : history.map(app => appointmentItemHTML(app, false)).join('');
+      } catch (err) {
+        console.error(err);
+        alert('⚠️ Could not load your dashboard: ' + err.message);
+      }
+    }
+
+    // Load dashboard on page load (after JS/api.js below has defined window.HospitalAPI)
+    document.addEventListener('DOMContentLoaded', loadDashboard);
+  </script>
+<script src="JS/api.js"></script>
+<script src="JS/script.js"></script>
+</body>
+</html>
