@@ -6,7 +6,7 @@
   'use strict';
 
   // Change this if your backend runs somewhere else (e.g. a deployed URL).
-  const API_BASE = window.API_BASE_URL || 'http://localhost:5000/api';
+  const API_BASE = window.API_BASE_URL || 'https://doon-hospital-backend.onrender.com/api';
 
   const TOKEN_KEY = 'doonhospital_token';
   const USER_KEY = 'doonhospital_user';
