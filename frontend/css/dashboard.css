@@ -2,7 +2,7 @@
    DASHBOARD PAGE – SPECIFIC STYLES
    ========================================== */
 
-/* ----- DASHBOARD HERO ----- */
+/*  DASHBOARD HERO */
 .dashboard-hero {
   position: relative;
   height: 30vh;
@@ -11,7 +11,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1920&q=80') center/cover no-repeat;
+  background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDZiRRq0jqgbWcXZ_MVySCjxp5TLx57S699ikCIXd35w&s=10') center/cover no-repeat;
   border-bottom: 5px solid #0069bcff;
 }
 

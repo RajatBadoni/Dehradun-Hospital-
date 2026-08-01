@@ -10,6 +10,7 @@ const authRoutes = require("./routes/auth");
 const doctorRoutes = require("./routes/doctors");
 const appointmentRoutes = require("./routes/appointments");
 const contactRoutes = require("./routes/contact");
+const { seedDatabase } = require("./data/seedDatabase");
 
 const app = express();
 
@@ -56,6 +57,14 @@ app.use((err, req, res, next) => {
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Doon Hospital backend running on http://localhost:${PORT}`);
-});
+
+// Seed doctors + default admin if the database is empty. This runs on
+// every startup (not just once) because free-tier hosts like Render
+// wipe the filesystem on every restart/redeploy/spin-down.
+seedDatabase()
+  .catch((err) => console.error("⚠️ Seeding failed:", err.message))
+  .finally(() => {
+    app.listen(PORT, () => {
+      console.log(`Doon Hospital backend running on http://localhost:${PORT}`);
+    });
+  });
